@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from "vue";
+
+const displayedText = ref("");
+
+fetch("http://localhost:3000")
+  .then((res) => res.text())
+  .then((newText) => {
+    displayedText.value = newText;
+  });
 </script>
 
 <template>
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <h1>Quizzr</h1>
+    <p>{{ displayedText }}</p>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
