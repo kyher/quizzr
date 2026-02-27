@@ -1,19 +1,23 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const displayedText = ref("");
+const questions = ref<Array<{ id: number; label: string }>>([]);
 
 fetch("http://localhost:3000")
-  .then((res) => res.text())
-  .then((newText) => {
-    displayedText.value = newText;
+  .then((res) => res.json())
+  .then((data) => {
+    questions.value = data;
   });
 </script>
 
 <template>
   <div>
     <h1>Quizzr</h1>
-    <p>{{ displayedText }}</p>
+    <ul>
+      <li v-for="question in questions" :key="question.id">
+        {{ question.label }}
+      </li>
+    </ul>
   </div>
 </template>
 
