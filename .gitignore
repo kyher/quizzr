@@ -23,6 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-/generated/prisma
+server/generated/prisma
 .env
 /*.db
