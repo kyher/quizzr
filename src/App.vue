@@ -13,6 +13,7 @@ fetch("http://localhost:3000")
 <template>
   <div>
     <h1>Quizzr</h1>
+    <h2>Questions</h2>
     <ul>
       <li v-for="question in questions" :key="question.id">
         {{ question.label }}
